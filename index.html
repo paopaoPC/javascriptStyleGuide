@@ -102,7 +102,36 @@
 <h2 id="-">代码验证与检查</h2>
 <p>可以使用JSHint检查验证你的JS代码</p>
 <h1 id="js-">JS规范</h1>
-<h2 id="-">类型</h2>
+<h2 id="-">命名</h2>
+<ul>
+<li><p>通常使用</p>
+<p>  functionNamesLikeThis</p>
+<p>  variableNamesLikeThis </p>
+<p>  ClassNamesLikeThis</p>
+<p>  EnumNamesLikeThis</p>
+<p>  methodNamesLikeThis</p>
+<p>  SYMBOLIC_CONSTANTS_LIKE_THIS</p>
+<p>  _privateVariableNamesLikeThis</p>
+<p>  _privateMethodNamesLikeThis</p>
+</li>
+<li><p>属性和方法</p>
+<p>  文件或类中的 私有 属性, 变量和方法名应该以下划线 &quot;_&quot; 开头.</p>
+<p>  保护属性, 变量和方法名不需要下划线开头, 和公共变量名一样.</p>
+</li>
+<li><p>方法和函数参数</p>
+<p>  可选参数以 opt_ 开头.</p>
+<p>  函数的参数个数不固定时, 应该添加最后一个参数 var_args 为参数的个数. 你也可以不设置 var_args而取代使用 arguments. </p>
+</li>
+</ul>
+<h2 id="-">编码风格</h2>
+<p>{}统一使用如下两种风格,但是只能选择其中一个。</p>
+<pre><code>function func()
+{
+}
+</code></pre><p>or</p>
+<pre><code>function func() {
+}
+</code></pre><h2 id="-">类型</h2>
 <ul>
 <li><p><strong>原始值</strong>: 存取直接作用于它自身。</p>
 <ul>
@@ -182,19 +211,6 @@ console.log(foo[0], bar[0]); // =&gt; 9, 9
 
   // good 推荐
   someStack.push(&#39;abracadabra&#39;);
-</code></pre></li>
-<li><p>当你需要深拷贝数组时，使用 Array#slice。</p>
-<pre><code>  var len = items.length;
-  var itemsCopy = [];
-  var i;
-
-  // bad
-  for (i = 0; i &lt; len; i++) {
-      itemsCopy[i] = items[i];
-  }
-
-  // good 推荐
-  itemsCopy = items.slice();
 </code></pre></li>
 <li><p>使用 Array#slice 将类数组对象转换成数组。</p>
 <pre><code>  function trigger() {
@@ -522,35 +538,6 @@ for (var i = 0, paragraph; paragraph = paragraphs[i]; i++) {
 for (var child = parentNode.firstChild; child; child = child.nextSibling) {   
     doSomething(child); 
 }
-</code></pre><h2 id="-">命名</h2>
-<ul>
-<li><p>通常使用</p>
-<p>  functionNamesLikeThis</p>
-<p>  variableNamesLikeThis </p>
-<p>  ClassNamesLikeThis</p>
-<p>  EnumNamesLikeThis</p>
-<p>  methodNamesLikeThis</p>
-<p>  SYMBOLIC_CONSTANTS_LIKE_THIS</p>
-<p>  _privateVariableNamesLikeThis</p>
-<p>  _privateMethodNamesLikeThis</p>
-</li>
-<li><p>属性和方法</p>
-<p>  文件或类中的 私有 属性, 变量和方法名应该以下划线 &quot;_&quot; 开头.</p>
-<p>  保护属性, 变量和方法名不需要下划线开头, 和公共变量名一样.</p>
-</li>
-<li><p>方法和函数参数</p>
-<p>  可选参数以 opt_ 开头.</p>
-<p>  函数的参数个数不固定时, 应该添加最后一个参数 var_args 为参数的个数. 你也可以不设置 var_args而取代使用 arguments. </p>
-</li>
-</ul>
-<h2 id="-">编码风格</h2>
-<p>{}统一使用如下两种风格</p>
-<pre><code>function func()
-{
-}
-</code></pre><p>or</p>
-<pre><code>function func() {
-}
 </code></pre><h1 id="html-css-">HTML/CSS 规范</h1>
 <h2 id="-html5-">推荐使用 HTML5 的文档类型申明：</h2>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -675,6 +662,9 @@ for (var child = parentNode.firstChild; child; child = child.nextSibling) {
 <p>  6：private、protected的成员函数和成员变量对外应该是不可见的，外部不应该调用和使用具有_前缀的函数和变量（参见命名规则）</p>
 </li>
 </ul>
+<h2 id="render-onshow-">render()和onShow()的区别</h2>
+<p>render()只执行一次。在页面加载时调用,且执行与页面初始化相关且不耗时的代码。</p>
+<p>onShow()每次进入该页面均会执行此方法，在render()之后执行。如果要在onShow放与初始化有关的代码，需要控制初始化代码的执行。</p>
 <h2 id="-this-">保存成员函数的this对象</h2>
 <p>使用butterfly框架，在稍微复杂的成员函数实现中，可以在函数开头用：</p>
 <pre><code>var  me = this;
